@@ -50,6 +50,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function base()
+    {
+        return $this->belongsTo(Base::class);
+    }
+
     /**
      * Get the user's initials
      */
