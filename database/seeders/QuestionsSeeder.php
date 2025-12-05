@@ -27,15 +27,12 @@ class QuestionsSeeder extends Seeder
 
         $this->command->info("📥 Importation de ".count($data)." questions...");
 
-        // Effacer les tables avant d'insérer
-        Reponse::truncate();
-        Question::truncate();
 
         foreach ($data as $entry) {
 
             // Créer la question
             $question = Question::create([
-                'contexte' => $entry['question'],
+                'contexte' => $entry['contexte'],
                 'indice'   => $entry['indice'] ?? null,
             ]);
 
@@ -43,9 +40,9 @@ class QuestionsSeeder extends Seeder
             foreach ($entry['reponses'] as $rep) {
                 Reponse::create([
                     'question_id' => $question->id,
-                    'proposition' => $rep['proposition'],
-                    'resultat'    => (bool) $rep['resultat'],
-                    'correction'  => $rep['correction'] ?? null,
+                    'proposition' => $rep['propositions'],
+                    'resultat'    => (bool) $rep['resultats'],
+                    'correction'  => $rep['corrections'] ?? null,
                 ]);
             }
         }
