@@ -1,3 +1,4 @@
+import "./pair-game.js"
 window.doorsGame = {
     currentQuestion: null,
 

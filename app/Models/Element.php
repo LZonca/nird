@@ -10,6 +10,7 @@ class Element extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'name',
         'level_max',
     ];
