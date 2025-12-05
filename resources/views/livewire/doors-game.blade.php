@@ -2,11 +2,26 @@
     @if($showGame && $currentQuestion)
     <div class="w-full max-w-7xl">
         {{-- Affichage de la question --}}
-        <div class="bg-white/95 rounded-2xl shadow-xl p-5 mb-6 backdrop-blur-sm border-2 border-white/50">
+        <div class="bg-white/95 rounded-2xl shadow-xl p-5 mb-6 backdrop-blur-sm border-4 border-yellow-400">
             <div class="text-center">
                 <h2 class="text-xl font-bold text-gray-800">{{ $currentQuestion->contexte }}</h2>
             </div>
         </div>
+
+
+<style>
+    @font-face {
+        font-family: 'PanneauFont';
+        src:
+            url({{ asset('fonts/Minecraft.ttf')}}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+.panneau-text {
+    font-family: 'PanneauFont', sans-serif;
+}
+  
+</style>
 
         {{-- Affichage des portes avec les réponses --}}
         <div class="flex flex-wrap justify-center gap-4 mb-8 w-full relative px-4">
@@ -32,10 +47,12 @@
                             <div class="absolute inset-x-0 top-1/4 bottom-1/4 flex items-center justify-center p-4 z-10">
                                 <div class="relative w-full max-w-[90%]">
                                     {{-- Image du panneau en background --}}
-                                    <img src="{{ asset('images/panneau.png') }}" alt="Panneau" class="w-full h-auto drop-shadow-2xl">
+                                    <img src="{{ asset('images/panneau_2.png') }}" alt="Panneau" class="w-full h-auto drop-shadow-2xl">
                                     {{-- Texte par-dessus le panneau --}}
                                     <div class="absolute inset-0 flex items-center justify-center p-3">
-                                        <p class="text-gray-800 font-bold text-center text-sm leading-tight">{{ $reponse->proposition }}</p>
+                                    <p class="text-gray-800 font-bold text-center text-sm leading-tight panneau-text">
+                                        {{ $reponse->proposition }}
+                                    </p>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +80,7 @@
                     @elseif($resultType === 'neutral')
                         <img src="{{ asset('images/nothing_doors.jpg') }}" alt="Neutre" class="result-image-zoom object-cover w-full h-full">
                     @else
-                        <img src="{{ asset('images/nothing_doors.jpg') }}" alt="Gain" class="result-image-zoom object-cover w-full h-full">
+                        <img src="{{ asset('images/congrat_doors.webp') }}" alt="Gain" class="result-image-zoom object-cover w-full h-full">
                     @endif
                 </div>
 
