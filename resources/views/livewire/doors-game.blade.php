@@ -1,6 +1,13 @@
 <div class="flex flex-col items-center justify-center min-h-screen p-6" style="background-image: url('{{ asset('images/doors-bg.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     @if($showGame && $currentQuestion)
     <div class="w-full max-w-7xl">
+        {{-- Compteur de questions --}}
+        <div class="text-center mb-4">
+            <div class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full font-bold shadow-lg">
+                Question {{ $questionNumber }} / {{ $totalQuestions }}
+            </div>
+        </div>
+
         {{-- Affichage de la question --}}
         <div class="bg-white/95 rounded-2xl shadow-xl p-5 mb-6 backdrop-blur-sm border-2 border-white/50">
             <div class="text-center">
@@ -63,7 +70,7 @@
                     @elseif($resultType === 'neutral')
                         <img src="{{ asset('images/nothing_doors.jpg') }}" alt="Neutre" class="result-image-zoom object-cover w-full h-full">
                     @else
-                        <img src="{{ asset('images/nothing_doors.jpg') }}" alt="Gain" class="result-image-zoom object-cover w-full h-full">
+                        <img src="{{ asset('images/success_doors.png') }}" alt="Gain" class="result-image-zoom object-cover w-full h-full">
                     @endif
                 </div>
 
@@ -95,7 +102,11 @@
                             wire:click="nextQuestion"
                             class="bg-white text-gray-900 hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg shadow-2xl transform transition-all duration-300 hover:scale-110"
                         >
-                            Question suivante ➜
+                            @if($questionNumber >= $totalQuestions)
+                                Retour vers Pluto
+                            @else
+                                Question suivante ({{ $questionNumber + 1 }}/{{ $totalQuestions }})
+                            @endif
                         </button>
                     </div>
                 </div>
