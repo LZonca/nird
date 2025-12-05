@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         //Question::factory(30)->create();
         $this->call([
             QuestionsSeeder::class,
+            ElementSeeder::class,
         ]);
 
         User::factory()->create([
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
             PairSeeder::class,
         ]);
         $this->call(PairSeeder::class);
+
 
     }
 }

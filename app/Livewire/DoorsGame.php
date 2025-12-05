@@ -17,6 +17,7 @@ class DoorsGame extends Component
     public $showResult = false;
     public $questionNumber = 1; // Numéro de la question actuelle
     public $totalQuestions = 3; // Nombre total de questions par session
+    public $isReturningToPlateau = false; // Indique qu'on retourne au plateau
 
     public function mount()
     {
@@ -138,6 +139,7 @@ class DoorsGame extends Component
         // Si on a fini les 3 questions, retourner au plateau
         if ($this->questionNumber >= $this->totalQuestions) {
             \Log::info('✅ Session terminée - Retour au plateau');
+            $this->isReturningToPlateau = true;
             $this->dispatch('retour-plateau');
         } else {
             // Sinon, charger la question suivante

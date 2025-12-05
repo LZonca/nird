@@ -57,6 +57,19 @@ class PairsGame extends Component
             $this->rightCards = array_filter($this->rightCards, fn($c) => $c['id'] != $this->selectedRight);
 
             $this->dispatch('match-found');
+
+            // Vérifier si toutes les paires sont trouvées
+            \Log::info('🔍 Vérification fin de jeu:', [
+                'leftCards_count' => count($this->leftCards),
+                'rightCards_count' => count($this->rightCards),
+                'matches' => $this->matches
+            ]);
+
+            if (count($this->leftCards) === 0 && count($this->rightCards) === 0) {
+                \Log::info('✅ TOUTES LES PAIRES TROUVÉES - Dispatch game-completed');
+                $this->dispatch('game-completed');
+                \Log::info('✅ Event game-completed dispatché');
+            }
         } else {
             // ❌ mauvaise association → envoie un event JS
             $this->dispatch('wrong-pair');

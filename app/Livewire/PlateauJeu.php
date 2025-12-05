@@ -8,8 +8,10 @@ class PlateauJeu extends Component
 {
     public $caseActuelle; // Position actuelle du joueur (chargée depuis la BDD)
     public $nombreCases = 10; // Nombre total de cases
-    public $rayon = 200; // Rayon du circuit en pixels
+    public $rayon = 220; // Rayon du circuit en pixels
     public $yearActuel; // Compteur de tours
+    public $isMoving = false; // Indique si le joueur est en train de se déplacer
+    public $elements = []; // Éléments de la base avec leur niveau
 
     public function mount()
     {
@@ -19,6 +21,9 @@ class PlateauJeu extends Component
         $this->caseActuelle = $user->position !== null ? $user->position : ($this->nombreCases - 1);
         $this->yearActuel = $user->year ?? 1; // Par défaut tour 1
 
+        // Charger les éléments de la base
+        $this->loadElements();
+
         \Log::info('🚀 MOUNT PlateauJeu - Chargement initial:', [
             'user_id' => $user->id,
             'position_bdd' => $user->position,
@@ -26,12 +31,49 @@ class PlateauJeu extends Component
             'caseActuelle' => $this->caseActuelle,
             'yearActuel' => $this->yearActuel,
             'nombreCases' => $this->nombreCases,
-            'derniere_case' => $this->nombreCases - 1
+            'derniere_case' => $this->nombreCases - 1,
+            'elements_count' => count($this->elements)
         ]);
+    }
+
+    public function loadElements()
+    {
+        $user = auth()->user();
+
+        if (!$user->base_id) {
+            $this->elements = [];
+            return;
+        }
+
+        // Récupérer les éléments initialisés pour cette base
+        $this->elements = \DB::table('base_element')
+            ->join('elements', 'base_element.element_id', '=', 'elements.id')
+            ->where('base_element.base_id', $user->base_id)
+            ->where('base_element.level', '>', 0)
+            ->select('elements.name', 'elements.url', 'base_element.level')
+            ->get()
+            ->map(function($element) {
+                return [
+                    'name' => $element->name,
+                    'url' => $element->url,
+                    'level' => (int) $element->level,
+                    'is_tree' => str_contains(strtolower($element->name), 'arbre') || str_contains(strtolower($element->name), 'tree'),
+                    'is_radio' => str_contains(strtolower($element->name), 'radio')
+                ];
+            })
+            ->toArray();
     }
 
     public function avancer()
     {
+        // Empêcher les clics multiples
+        if ($this->isMoving) {
+            \Log::warning('⚠️ Déplacement déjà en cours - clic ignoré');
+            return;
+        }
+
+        $this->isMoving = true;
+
         \Log::info('🚶 === AVANCER ===');
         \Log::info('Position avant avancer:', ['caseActuelle' => $this->caseActuelle]);
 
@@ -81,20 +123,26 @@ class PlateauJeu extends Component
 
     public function declencherMiniJeu()
     {
-        // Ne pas déclencher de mini-jeu sur la case base
+        // Sur la case base, rediriger vers la page d'amélioration
         if ($this->caseActuelle === ($this->nombreCases - 1)) {
-            \Log::info('🏠 Case base - Pas de mini-jeu');
+            \Log::info('🏠 Case base - Redirection vers amélioration');
+            $this->redirect(route('base-upgrade'), navigate: false);
             return;
         }
 
         // Liste des mini-jeux disponibles
-        $miniJeux = ['door-game']; // On pourra ajouter d'autres jeux plus tard
+        $miniJeux = ['door-game', 'pairs-game'];
 
         // Choisir un mini-jeu aléatoirement
         $miniJeuChoisi = $miniJeux[array_rand($miniJeux)];
 
-        \Log::info('🎮 Déclenchement mini-jeu:', ['jeu' => $miniJeuChoisi, 'case' => $this->caseActuelle]);
+        \Log::info('🎮 Déclenchement mini-jeu aléatoire:', [
+            'jeu' => $miniJeuChoisi,
+            'case' => $this->caseActuelle,
+            'jeux_disponibles' => $miniJeux
+        ]);
 
+        // Le bouton restera désactivé jusqu'à ce qu'on revienne du mini-jeu (le composant sera réinitialisé)
         // Rediriger vers le mini-jeu en utilisant la méthode Livewire
         $this->redirect(route($miniJeuChoisi), navigate: false);
     }

@@ -26,7 +26,8 @@ class User extends Authenticatable
         'base_id',
         'year',
         'position',
-        'funds'
+        'funds',
+        'last_upgrade_year'
     ];
 
     /**

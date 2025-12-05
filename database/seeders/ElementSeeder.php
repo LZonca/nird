@@ -21,6 +21,7 @@ class ElementSeeder extends Seeder
                 'name'      => $item['name'],
                 'level_max' => $item['level_max'],
                 'url'       => $item['url'],
+                'upgrade_cost' => $item['upgrade_cost'],
             ]);
         }
     }

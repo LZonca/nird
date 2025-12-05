@@ -21,12 +21,16 @@ Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
     // Routes de jeu
+    Route::get('pairs-game', \App\Livewire\PairsGame::class)->name('pairs-game');
     Route::get('door-game', \App\Livewire\DoorsGame::class)->name('door-game');
     Route::get('plateau', \App\Livewire\PlateauJeu::class)->name('plateau');
+    Route::get('base-upgrade', \App\Livewire\BaseUpgrade::class)->name('base-upgrade');
     Route::get('settings/profile', Profile::class)->name('profile.edit');
     Route::get('settings/password', Password::class)->name('user-password.edit');
     Route::get('settings/appearance', Appearance::class)->name('appearance.edit');
-
+    Route::get('secret', function (){
+        return view('secret');
+    })->name('secret');
     Route::get('settings/two-factor', TwoFactor::class)
         ->middleware(
             when(
