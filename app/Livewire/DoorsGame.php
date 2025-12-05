@@ -12,7 +12,8 @@ class DoorsGame extends Component
     public $reponses = [];
     public $showGame = false;
     public $selectedAnswer = null;
-    public $isCorrect = null;
+    public $resultType = null; // 'gain', 'neutral', 'trap'
+    public $fundsEarned = 0;
     public $showResult = false;
 
     public function mount()
@@ -40,20 +41,52 @@ class DoorsGame extends Component
         }
 
         $this->selectedAnswer = $reponseId;
+        $nombreReponses = count($this->reponses);
 
-        // Vérifier si la réponse est correcte
-        $reponse = collect($this->reponses)->firstWhere('id', $reponseId);
-        $this->isCorrect = $reponse['resultat'] ?? false;
+        // Déterminer le résultat selon les probabilités
+        $random = rand(1, $nombreReponses);
+
+        if ($random === 1) {
+            // Cas rare (1/nombre de réponses) : piège - perte de funds
+            $this->resultType = 'trap';
+            $this->fundsEarned = rand(3, 5); // Montant perdu
+
+            // Retirer les funds à l'utilisateur
+            if (auth()->check()) {
+                $user = auth()->user();
+                $user->funds = max(0, ($user->funds ?? 0) - $this->fundsEarned); // Ne pas descendre en dessous de 0
+                $user->save();
+            }
+        } else {
+            // Autres cas : 50% gain, 50% neutre
+            $randomChance = rand(1, 2);
+            if ($randomChance === 1) {
+                // Gain : entre 3 et 10 funds
+                $this->resultType = 'gain';
+                $this->fundsEarned = rand(3, 10);
+
+                // Ajouter les funds à l'utilisateur
+                if (auth()->check()) {
+                    $user = auth()->user();
+                    $user->funds = ($user->funds ?? 0) + $this->fundsEarned;
+                    $user->save();
+                }
+            } else {
+                // Neutre : rien
+                $this->resultType = 'neutral';
+                $this->fundsEarned = 0;
+            }
+        }
+
         $this->showResult = true;
-
-        // Attendre 3 secondes puis charger une nouvelle question
-        $this->dispatch('answer-selected', isCorrect: $this->isCorrect);
+        $this->dispatch('answer-selected', resultType: $this->resultType, fundsEarned: $this->fundsEarned);
     }
 
     public function nextQuestion()
     {
-        $this->reset(['selectedAnswer', 'isCorrect', 'showResult']);
+        $this->reset(['selectedAnswer', 'resultType', 'fundsEarned', 'showResult']);
         $this->loadNewQuestion();
+        $this->dispatch('close-result-modal');
     }
 
     #[On('player-on-door')]
