@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Base extends Model
 {
     protected $fillable = [
+        'id',
         'name',
         'created_by',
         'updated_by'

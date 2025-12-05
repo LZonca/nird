@@ -1,0 +1,180 @@
+[
+    {
+      "question": "NIRD encourage le reconditionnement des ordinateurs pour prolonger leur durée de vie. Pourquoi reconditionner les ordinateurs est pertinent ?",
+      "indice": "Réfléchis à ce qui évite de produire un nouvel ordinateur à chaque fois.",
+      "reponses": [
+        {"proposition": "Pour prolonger leur durée de vie", "resultat": true, "correction": "Bonne réponse ! Cela réduit les déchets et l'utilisation de nouvelles ressources, et ton ordinateur reste utile plus longtemps."},
+        {"proposition": "Pour compliquer la maintenance", "resultat": false, "correction": "Incorrect. L'objectif est de simplifier l'entretien et l'usage, pas de créer des problèmes supplémentaires."},
+        {"proposition": "Pour augmenter le stock d'objets inutiles", "resultat": false, "correction": "Incorrect. Le but est de limiter le gaspillage et l'encombrement."}
+      ]
+    },
+    {
+      "question": "Les services d'apps.education.fr sont accessibles aux agents via un identifiant académique. Quel est l’identifiant utilisé pour se connecter ?",
+      "indice": "C’est ce qui te permet de t’identifier de manière sécurisée sur les services numériques.",
+      "reponses": [
+        {"proposition": "Compte", "resultat": true, "correction": "Bonne réponse ! Un compte individuel garantit un accès sécurisé aux services."},
+        {"proposition": "Badge", "resultat": false, "correction": "Incorrect. Le badge ne permet pas de se connecter aux plateformes numériques."},
+        {"proposition": "Mot de passe partagé", "resultat": false, "correction": "Incorrect. Chaque utilisateur doit disposer de son propre accès."},
+        {"proposition": "Clé USB", "resultat": false, "correction": "Incorrect. Elle sert uniquement au stockage local, pas à l’accès."}
+      ]
+    },
+    {
+      "question": "Nextcloud permet de stocker et partager des fichiers. Quel service permet de centraliser les documents pour plusieurs utilisateurs ?",
+      "indice": "Quel outil centralise les documents pour que plusieurs utilisateurs puissent y accéder facilement ?",
+      "reponses": [
+        {"proposition": "Nextcloud", "resultat": true, "correction": "Bonne réponse ! Les fichiers restent organisés et accessibles à tous les collaborateurs."},
+        {"proposition": "Classe Virtuelle", "resultat": false, "correction": "Incorrect. Elle sert aux visioconférences, pas au stockage de fichiers."},
+        {"proposition": "Messagerie", "resultat": false, "correction": "Incorrect. Elle permet d’échanger des messages mais pas de centraliser des documents."}
+      ]
+    },
+    {
+      "question": "NIRD favorise l’utilisation de logiciels libres. Quel type de logiciel permet d’être adapté librement aux besoins des utilisateurs ?",
+      "indice": "Le logiciel que tu peux adapter librement à tes besoins.",
+      "reponses": [
+        {"proposition": "Libres", "resultat": true, "correction": "Bonne réponse ! Les logiciels libres permettent transparence et personnalisation."},
+        {"proposition": "Propriétaires", "resultat": false, "correction": "Incorrect. Ces logiciels imposent des restrictions et limitent la modification."},
+        {"proposition": "Obscurs", "resultat": false, "correction": "Incorrect. Les logiciels doivent être compréhensibles et accessibles."},
+        {"proposition": "Éphémères", "resultat": false, "correction": "Incorrect. On privilégie la durabilité."}
+      ]
+    },
+    {
+      "question": "Les fichiers volumineux peuvent ralentir le système et consommer plus d’énergie. Quelle pratique NIRD recommande-t-il pour limiter cet impact ?",
+      "indice": "Quel comportement limite l’impact sur les ressources tout en gardant les fichiers utiles ?",
+      "reponses": [
+        {"proposition": "Limiter la taille des fichiers", "resultat": true, "correction": "Bonne réponse ! Cela optimise le stockage et réduit la consommation énergétique."},
+        {"proposition": "Envoyer tous les fichiers en haute résolution", "resultat": false, "correction": "Incorrect. Les fichiers trop volumineux surchargent les serveurs."},
+        {"proposition": "Multiplier les doublons", "resultat": false, "correction": "Incorrect. Cela crée un encombrement inutile et complique la gestion."}
+      ]
+    },
+    {
+      "question": "Le travail collaboratif peut se faire via des pads collaboratifs. Quel outil permet d’éditer un document simultanément avec plusieurs personnes ?",
+      "indice": "C’est ce qui permet de collaborer sur un document sans envoyer plusieurs versions par mail.",
+      "reponses": [
+        {"proposition": "Pads collaboratifs", "resultat": true, "correction": "Bonne réponse ! Permet l’édition simultanée par plusieurs utilisateurs."},
+        {"proposition": "Messagerie instantanée", "resultat": false, "correction": "Incorrect. Sert uniquement à échanger des messages."},
+        {"proposition": "Classe Virtuelle", "resultat": false, "correction": "Incorrect. Destinée à la visioconférence."}
+      ]
+    },
+    {
+      "question": "Les fichiers lourds peuvent ralentir les serveurs. Quelle pratique permet de limiter leur impact tout en conservant les informations ?",
+      "indice": "Quel comportement optimise la gestion des fichiers volumineux ?",
+      "reponses": [
+        {"proposition": "Compresser les fichiers", "resultat": true, "correction": "Bonne réponse ! Réduit la taille et facilite le partage."},
+        {"proposition": "Envoyer toutes les versions en haute résolution", "resultat": false, "correction": "Incorrect. Cela alourdit inutilement le système."},
+        {"proposition": "Créer des copies multiples", "resultat": false, "correction": "Incorrect. Crée de la redondance inutile."}
+      ]
+    },
+    {
+      "question": "Le numérique durable vise à réduire la consommation de ressources et d’énergie. Quels éléments cherchent-on à réduire ?",
+      "indice": "C’est ce qu’on cherche à réduire pour un numérique durable.",
+      "reponses": [
+        {"proposition": "Ressources", "resultat": true, "correction": "Bonne réponse ! Réduction du gaspillage matériel et énergétique."},
+        {"proposition": "Temps inutile", "resultat": false, "correction": "Incorrect. L’organisation peut aider mais ce n’est pas l’objectif principal."},
+        {"proposition": "Énergie", "resultat": true, "correction": "Bonne réponse également, lié à la consommation énergétique."},
+        {"proposition": "Argent", "resultat": false, "correction": "Incorrect. L’économie peut être un effet secondaire mais ce n’est pas le focus."}
+      ]
+    },
+    {
+      "question": "La messagerie permet la communication entre agents. Quelle fonction correspond à son usage principal ?",
+      "indice": "Quel outil permet des échanges rapides mais ne stocke pas de gros fichiers ?",
+      "reponses": [
+        {"proposition": "Envoyer des messages courts", "resultat": true, "correction": "Bonne réponse ! Idéal pour les échanges rapides et directs."},
+        {"proposition": "Stocker des fichiers lourds", "resultat": false, "correction": "Incorrect. Nextcloud est adapté pour cela."},
+        {"proposition": "Organiser des visioconférences", "resultat": false, "correction": "Incorrect. La messagerie n’est pas destinée à la visioconférence."}
+      ]
+    },
+    {
+      "question": "Le tri du matériel informatique permet un usage optimal. Pourquoi trier les équipements ?",
+      "indice": "Avant de recycler, que fait-on pour prolonger la vie du matériel ?",
+      "reponses": [
+        {"proposition": "Pour réutiliser ou recycler", "resultat": true, "correction": "Bonne réponse ! Optimise la durée de vie des objets et réduit le gaspillage."},
+        {"proposition": "Pour jeter rapidement", "resultat": false, "correction": "Incorrect. Le tri vise à limiter le gaspillage, pas à jeter."},
+        {"proposition": "Pour compliquer la logistique", "resultat": false, "correction": "Incorrect. L’objectif est de simplifier la gestion des équipements."}
+      ]
+    },
+    {
+      "question": "Nextcloud permet de déposer et partager des documents entre collègues. Quelle est sa fonction principale ?",
+      "indice": "Quel service permet de garder et partager des documents facilement ?",
+      "reponses": [
+        {"proposition": "Partager", "resultat": true, "correction": "Bonne réponse ! Favorise la collaboration et l’accès centralisé."},
+        {"proposition": "Cacher", "resultat": false, "correction": "Incorrect. L’objectif est que les documents soient accessibles."},
+        {"proposition": "Perdre", "resultat": false, "correction": "Incorrect. On cherche à préserver l’information."},
+        {"proposition": "Imprimer automatiquement", "resultat": false, "correction": "Incorrect. Ce n’est pas prévu par le service."}
+      ]
+    },
+    {
+      "question": "NIRD favorise un usage inclusif. Que signifie “inclusif” ?",
+      "indice": "Quel principe garantit que tous les utilisateurs peuvent accéder aux services ?",
+      "reponses": [
+        {"proposition": "Accessible à tous", "resultat": true, "correction": "Bonne réponse ! Aucun utilisateur n’est exclu."},
+        {"proposition": "Uniquement pour certains", "resultat": false, "correction": "Incorrect. Contredit le principe d’inclusion."},
+        {"proposition": "Réservé aux enseignants", "resultat": false, "correction": "Incorrect. Tous les agents et élèves doivent pouvoir accéder."}
+      ]
+    },
+    {
+      "question": "Limiter la production de déchets numériques contribue à un environnement plus sain. Quel est l’impact principal visé ?",
+      "indice": "Quel impact environnemental cherche-t-on à limiter avec un usage responsable du numérique ?",
+      "reponses": [
+        {"proposition": "Écologique", "resultat": true, "correction": "Bonne réponse ! Réduction de la pollution numérique."},
+        {"proposition": "Financier", "resultat": false, "correction": "Incorrect. L’économie peut être un effet secondaire mais ce n’est pas le focus principal."},
+        {"proposition": "Humain", "resultat": false, "correction": "Incorrect. L’objectif principal est environnemental."},
+        {"proposition": "Temporel", "resultat": false, "correction": "Incorrect. La priorité est écologique."}
+      ]
+    },
+    {
+      "question": "Si un agent change d’académie, que se passe-t-il pour ses comptes et fichiers sur apps.education.fr ?",
+      "indice": "Que devrait-il retrouver pour continuer son travail sans interruption ?",
+      "reponses": [
+        {"proposition": "Il garde ses accès et documents", "resultat": true, "correction": "Bonne réponse ! La continuité des services est assurée."},
+        {"proposition": "Il perd tout", "resultat": false, "correction": "Incorrect. Ce serait problématique pour l’utilisateur."},
+        {"proposition": "Il doit recréer son compte", "resultat": false, "correction": "Incorrect. Les comptes restent valides."}
+      ]
+    },
+    {
+      "question": "La messagerie permet d’échanger des messages rapidement. Quelle est sa fonction principale ?",
+      "indice": "Quel type de communication est adapté à la messagerie ?",
+      "reponses": [
+        {"proposition": "Communication instantanée", "resultat": true, "correction": "Bonne réponse ! Pratique pour les échanges rapides."},
+        {"proposition": "Stockage de gros fichiers", "resultat": false, "correction": "Incorrect. Nextcloud est prévu pour ça."},
+        {"proposition": "Organisation de visioconférences", "resultat": false, "correction": "Incorrect. Ce n’est pas sa fonction."}
+      ]
+    },
+    {
+      "question": "Quelle pratique permet d’optimiser le stockage et la collaboration dans Nextcloud ?",
+      "indice": "Quel comportement aide à éviter les doublons et facilite le travail collaboratif ?",
+      "reponses": [
+        {"proposition": "Centraliser les fichiers", "resultat": true, "correction": "Bonne réponse ! Permet un accès simple pour tous les collaborateurs."},
+        {"proposition": "Créer des copies multiples", "resultat": false, "correction": "Incorrect. Cela complique la gestion des documents."},
+        {"proposition": "Supprimer systématiquement", "resultat": false, "correction": "Incorrect. Les fichiers doivent rester disponibles pour le travail collaboratif."}
+      ]
+    },
+    {
+      "question": "Les logiciels libres sont encouragés par NIRD. Pourquoi sont-ils privilégiés ?",
+      "indice": "Quel type de logiciel offre transparence et liberté de modification ?",
+      "reponses": [
+        {"proposition": "Libres", "resultat": true, "correction": "Bonne réponse ! Ils permettent adaptabilité et compréhension complète."},
+        {"proposition": "Propriétaires", "resultat": false, "correction": "Incorrect. Ils imposent des restrictions sur l’utilisation."},
+        {"proposition": "Obscurs", "resultat": false, "correction": "Incorrect. La clarté et l’accessibilité sont importantes."}
+      ]
+    },
+    {
+      "question": "Pour réduire la consommation énergétique des serveurs, que conseille NIRD concernant les fichiers volumineux ?",
+      "indice": "Comment gérer les fichiers pour limiter leur impact énergétique ?",
+      "reponses": [
+        {"proposition": "Compresser les fichiers", "resultat": true, "correction": "Bonne réponse ! Réduit la taille et l’impact sur le serveur."},
+        {"proposition": "Envoyer toutes les versions en haute résolution", "resultat": false, "correction": "Incorrect. Cela surcharge les serveurs inutilement."},
+        {"proposition": "Multiplier les doublons", "resultat": false, "correction": "Incorrect. Crée un encombrement inutile."}
+      ]
+    },
+    {
+      "question": "Le numérique responsable vise à réduire la pollution numérique. Quel est l’objectif principal ?",
+      "indice": "Quel impact cherche-t-on à limiter en priorité ?",
+      "reponses": [
+        {"proposition": "Écologique", "resultat": true, "correction": "Bonne réponse ! L’objectif principal est de réduire l’impact environnemental."},
+        {"proposition": "Financier", "resultat": false, "correction": "Incorrect. L’économie est secondaire ici."},
+        {"proposition": "Humain", "resultat": false, "correction": "Incorrect. L’impact sur l’utilisateur n’est pas la priorité principale."},
+        {"proposition": "Temporel", "resultat": false, "correction": "Incorrect. La priorité est écologique."}
+      ]
+    }
+  ]
+  
