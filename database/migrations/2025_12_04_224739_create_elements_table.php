@@ -11,6 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->integer('level_max');
+            $table->string('url');
+            $table->integer('upgrade_cost');
             $table->timestamps();
         });
     }

@@ -1,5 +1,14 @@
 <div class="flex flex-col items-center justify-center min-h-screen p-6" style="background-image: url('{{ asset('images/doors-bg.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    @if($showGame && $currentQuestion)
+    @if($isReturningToPlateau)
+        {{-- Écran noir de transition lors du retour au plateau --}}
+        <div class="fixed inset-0 bg-black z-[200] flex items-center justify-center">
+            <div class="text-white text-center">
+                <div class="text-6xl mb-4">🚀</div>
+                <h2 class="text-3xl font-bold mb-4">Retour vers Pluto...</h2>
+                <div class="animate-spin inline-block w-12 h-12 border-4 border-white/30 border-t-white rounded-full"></div>
+            </div>
+        </div>
+    @elseif($showGame && $currentQuestion)
     <div class="w-full max-w-7xl">
         {{-- Compteur de questions --}}
         <div class="text-center mb-4">

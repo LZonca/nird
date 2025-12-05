@@ -4,6 +4,62 @@
         <img src="{{ asset('images/pluto.png') }}" alt="Plateau" class="max-w-full max-h-full object-contain">
     </div>
 
+    {{-- Éléments au centre (non-arbres, non-radios) --}}
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="relative w-96 h-96">
+            @php
+                $centerElements = collect($elements)->filter(fn($el) => !$el['is_tree'] && !$el['is_radio'])->values();
+                $centerRadius = 80; // Rayon pour les éléments au centre
+            @endphp
+
+            @foreach($centerElements as $index => $element)
+                @for($i = 0; $i < min($element['level'], 3); $i++)
+                    @php
+                        $angle = ($index * 360 / max(count($centerElements), 1)) - 90 + ($i * 15);
+                        $angleRad = deg2rad($angle);
+                        $x = $centerRadius * cos($angleRad);
+                        $y = $centerRadius * sin($angleRad);
+                    @endphp
+
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2"
+                         style="left: calc(50% + {{ $x }}px); top: calc(50% + {{ $y }}px);">
+                        <img src="{{ asset($element['url']) }}"
+                             alt="{{ $element['name'] }}"
+                             class="w-12 h-12 object-contain drop-shadow-xl opacity-{{ 100 - ($i * 10) }}">
+                    </div>
+                @endfor
+            @endforeach
+        </div>
+    </div>
+
+    {{-- Arbres et radios à l'extérieur --}}
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="relative w-[700px] h-[700px]">
+            @php
+                $outerElements = collect($elements)->filter(fn($el) => $el['is_tree'] || $el['is_radio'])->values();
+                $outerRadius = 320; // Rayon pour les arbres et radios
+            @endphp
+
+            @foreach($outerElements as $index => $element)
+                @for($i = 0; $i < min($element['level'], 3); $i++)
+                    @php
+                        $angle = ($index * 360 / max(count($outerElements), 1)) - 90 + ($i * 20);
+                        $angleRad = deg2rad($angle);
+                        $x = $outerRadius * cos($angleRad);
+                        $y = $outerRadius * sin($angleRad);
+                    @endphp
+
+                    <div class="absolute transform -translate-x-1/2 -translate-y-1/2"
+                         style="left: calc(50% + {{ $x }}px); top: calc(50% + {{ $y }}px);">
+                        <img src="{{ asset($element['url']) }}"
+                             alt="{{ $element['name'] }}"
+                             class="w-16 h-16 object-contain drop-shadow-2xl opacity-{{ 100 - ($i * 5) }}">
+                    </div>
+                @endfor
+            @endforeach
+        </div>
+    </div>
+
     {{-- Circuit de cases en cercle --}}
     <div class="absolute inset-0 flex items-center justify-center">
         <div class="relative circuit-container" style="width: 600px; height: 600px;">
@@ -55,7 +111,7 @@
                 $startX = $rayon * cos($startAngleRad);
                 $startY = $rayon * sin($startAngleRad);
             @endphp
-            <div id="player" class="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 z-10"
+            <div id="player" class="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 z-10 cursor-pointer hover:scale-110"
                  style="left: calc(50% + {{ $startX }}px); top: calc(50% + {{ $startY }}px);">
                 <img src="{{ asset('images/character.png') }}" alt="Joueur" class="w-20 h-20 object-contain drop-shadow-2xl">
             </div>
@@ -72,8 +128,16 @@
 
     {{-- Contrôles du jeu --}}
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <button id="avancerBtn" wire:click="avancer" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full text-lg shadow-2xl transform transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
-            ➡️ Avancer
+        <button
+            wire:click="avancer"
+            @if($isMoving) disabled @endif
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full text-lg shadow-2xl transform transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+        >
+            @if($isMoving)
+                ⏳ Déplacement...
+            @else
+                ➡️ Avancer
+            @endif
         </button>
     </div>
     <style>
@@ -97,7 +161,39 @@
         let playerCurrentCase = {{ $caseActuelle }}; // Position actuelle du joueur chargée depuis la BDD
         console.log('🎮 INIT - Position initiale du joueur:', playerCurrentCase);
 
+        // Compteur de clics sur le personnage pour la route secrète
+        let characterClickCount = 0;
+        const CHARACTER_CLICK_THRESHOLD = 10;
+
         document.addEventListener('livewire:init', () => {
+            // Gestionnaire de clics sur le personnage
+            const player = document.getElementById('player');
+            if (player) {
+                player.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    characterClickCount++;
+                    console.log(`🔍 Clics sur le personnage: ${characterClickCount}/${CHARACTER_CLICK_THRESHOLD}`);
+
+                    // Animation de feedback
+                    player.style.transform = 'translate(-50%, -50%) scale(1.3) rotate(360deg)';
+                    setTimeout(() => {
+                        player.style.transform = 'translate(-50%, -50%) scale(1)';
+                    }, 300);
+
+                    if (characterClickCount >= CHARACTER_CLICK_THRESHOLD) {
+                        console.log('🎉 Route secrète débloquée!');
+                        // Afficher un message avant la redirection
+                        const secretMessage = document.createElement('div');
+                        secretMessage.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(to right, #8b5cf6, #ec4899); color: white; padding: 2rem; border-radius: 1rem; font-size: 2rem; font-weight: bold; z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.5);';
+                        secretMessage.textContent = '🎉 Route Secrète Débloquée! 🎉';
+                        document.body.appendChild(secretMessage);
+
+                        setTimeout(() => {
+                            window.location.href = '/secret';
+                        }, 1500);
+                    }
+                });
+            }
             Livewire.on('deplacer-joueur', ({ caseIndex, rayon, nombreCases, nombreSauts }) => {
                 console.log('📡 EVENT REÇU - deplacer-joueur');
                 console.log('  → caseIndex (destination):', caseIndex);
