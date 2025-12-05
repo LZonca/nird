@@ -1,0 +1,51 @@
+[
+  { "id": 1, "gauche": "Linux", "droite": "Système d’exploitation libre, gratuit, américain.", "theme": "Linux" },
+  { "id": 2, "gauche": "Linux", "droite": "Compatible avec Windows pour les applications et le partage de fichiers.", "theme": "Linux" },
+  { "id": 3, "gauche": "Linux", "droite": "Économise ≈ 2 millions €.", "theme": "Linux" },
+  { "id": 4, "gauche": "LibreOffice", "droite": "Remplace Excel, Word, PowerPoint.", "theme": "Linux" },
+  { "id": 5, "gauche": "Linux", "droite": "Permet de continuer à utiliser des appareils même après fin de support Windows.", "theme": "Linux" },
+
+  { "id": 6, "gauche": "Fin des mises à jour Windows 10", "droite": "Millions d’ordinateurs deviennent inutilisables pour raisons de sécurité.", "theme": "Fin_du_support_Windows_et_Obsolescence" },
+  { "id": 7, "gauche": "Obsolescence programmée", "droite": "Stratégie visant à rendre un appareil inutile pour pousser à en acheter un nouveau.", "theme": "Fin_du_support_Windows_et_Obsolescence" },
+  { "id": 8, "gauche": "Ordinateurs de la police à remplacer", "droite": "25 000 postes, coût ≈ 15 millions d’euros.", "theme": "Fin_du_support_Windows_et_Obsolescence" },
+  { "id": 9, "gauche": "Budget licences Microsoft pour la police", "droite": "≈ 7 millions d’euros.", "theme": "Fin_du_support_Windows_et_Obsolescence" },
+  { "id": 10, "gauche": "Gendarmerie nationale", "droite": "A abandonné Windows il y a 20 ans pour des logiciels internes.", "theme": "Fin_du_support_Windows_et_Obsolescence" },
+  { "id": 11, "gauche": "FastTech", "droite": "Risque de ≈ 4000 ordinateurs en décharge.", "theme": "Fin_du_support_Windows_et_Obsolescence" },
+
+  { "id": 12, "gauche": "Décideur interne", "droite": "Aucun acteur externe qui impose un changement.", "theme": "Economie_et_Gestion" },
+  { "id": 13, "gauche": "Part des ordinateurs sous Windows", "droite": "≈ 75 % des machines.", "theme": "Economie_et_Gestion" },
+
+  { "id": 14, "gauche": "NIRD", "droite": "Numérique libre et éco-citoyen dans les établissements scolaires.", "theme": "Projet_NIRD" },
+  { "id": 15, "gauche": "Fin du support Windows 10", "droite": "PC devenus inutilisables sans raison matérielle.", "theme": "Projet_NIRD" },
+  { "id": 16, "gauche": "NIRD", "droite": "Inclusion – Responsabilité – Durabilité.", "theme": "Projet_NIRD" },
+  { "id": 17, "gauche": "Premier levier du NIRD", "droite": "Utilisation de Linux.", "theme": "Projet_NIRD" },
+  { "id": 18, "gauche": "Deuxième levier du NIRD", "droite": "Reconditionnement du matériel.", "theme": "Projet_NIRD" },
+  { "id": 19, "gauche": "Jalon 1 du NIRD", "droite": "Nommer un référent + sensibilisation + discussions sur Tchap.", "theme": "Projet_NIRD" },
+  { "id": 20, "gauche": "Jalon 2 du NIRD", "droite": "Expérimentation : installation Linux, reconditionnement, formation.", "theme": "Projet_NIRD" },
+
+  { "id": 21, "gauche": "Distribution primaire", "droite": "PrimTux.", "theme": "Distributions_Linux_NIRD" },
+  { "id": 22, "gauche": "Distribution secondaire", "droite": "Linux NIRD.", "theme": "Distributions_Linux_NIRD" },
+  { "id": 23, "gauche": "NIRD", "droite": "Légères, rapides, adaptées aux vieux PC, sans besoin internet.", "theme": "Distributions_Linux_NIRD" },
+  { "id": 24, "gauche": "Base technique de Linux NIRD", "droite": "Linux Mint + Xfce + Dock Plank.", "theme": "Distributions_Linux_NIRD" },
+  { "id": 25, "gauche": "Avantage pour débutants", "droite": "Forum Tchap d’accompagnement dédié.", "theme": "Distributions_Linux_NIRD" },
+  { "id": 26, "gauche": "Fonctionnement sur clé USB", "droite": "Bootable sans modifier l’ordinateur.", "theme": "Distributions_Linux_NIRD" },
+  { "id": 27, "gauche": "Reconditionnement par les élèves", "droite": "Club informatique : démontage, réparation, réinstallation.", "theme": "Distributions_Linux_NIRD" },
+
+  { "id": 28, "gauche": "Bénéfice du NIRD pour collectivités", "droite": "Réduction de la fracture numérique.", "theme": "Collectivites_et_Territoires" },
+  { "id": 29, "gauche": "Bénéfice du NIRD pour collectivités", "droite": "Souveraineté et sécurité numérique accrues.", "theme": "Collectivites_et_Territoires" },
+  { "id": 30, "gauche": "Aide d’une collectivité", "droite": "Financer, intégrer techniquement, former, montrer l’exemple.", "theme": "Collectivites_et_Territoires" },
+  { "id": 31, "gauche": "Impact territorial du NIRD", "droite": "Numérique plus sobre, plus sûr, plus solidaire.", "theme": "Collectivites_et_Territoires" },
+
+  { "id": 32, "gauche": "Centre-Val de Loire", "droite": "Déploiement de stations Linux dans collèges et lycées.", "theme": "Initiatives_en_France" },
+  { "id": 33, "gauche": "AURA", "droite": "Master Linux disponible pour lycées.", "theme": "Initiatives_en_France" },
+  { "id": 34, "gauche": "Ville de Blois", "droite": "Migration vers PrimTux contre l’obsolescence programmée.", "theme": "Initiatives_en_France" },
+
+  { "id": 35, "gauche": "Villes déjà engagées dans le libre", "droite": "Lyon, Grenoble, Strasbourg.", "theme": "Pourquoi_migrer_vers_le_libre" },
+  { "id": 36, "gauche": "Rôle des institutions", "droite": "Encourager les démarches numériques responsables.", "theme": "Pourquoi_migrer_vers_le_libre" },
+
+  { "id": 37, "gauche": "Réutiliser des machines pour ceux qui n’en ont pas ou en ont besoin ", "droite": "Réduction de la fracture numérique", "theme": "Collectivites_et_Territoires" },
+  { "id": 38, "gauche": "Reconditionner ", "droite": "Moins de déchets électroniques, économie de ressources, sobriété et durabilité.", "theme": "Collectivites_et_Territoires" },
+  { "id": 39, "gauche": "Inclusion", "droite": "Assurer un accès équitable au numérique.", "theme": "Collectivites_et_Territoires" },
+  { "id": 40, "gauche": "Durabilité ", "droite": "Lutter contre l’obsolescence, prolonger la vie du matériel. ", "theme": "Collectivites_et_Territoires" }
+
+]
