@@ -12,5 +12,15 @@ class Base extends Model
         'updated_by'
     ];
 
+    public function user(){
+        return $this->hasOne(User::class, 'base_id');
+    }
+
+    public function elements()
+    {
+        return $this->belongsToMany(Element::class)
+            ->withPivot('level')
+            ->withTimestamps();
+    }
 
 }
