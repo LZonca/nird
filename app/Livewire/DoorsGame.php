@@ -15,6 +15,8 @@ class DoorsGame extends Component
     public $resultType = null; // 'gain', 'neutral', 'trap'
     public $fundsEarned = 0;
     public $showResult = false;
+    public $questionNumber = 1; // Numéro de la question actuelle
+    public $totalQuestions = 3; // Nombre total de questions par session
 
     public function mount()
     {
@@ -128,8 +130,21 @@ class DoorsGame extends Component
         $this->reset(['selectedAnswer', 'resultType', 'fundsEarned', 'showResult']);
         $this->dispatch('close-result-modal');
 
-        // Rediriger vers le plateau après 1 seconde (pour laisser le temps à l'animation de se terminer)
-        $this->dispatch('retour-plateau');
+        \Log::info('📊 Question suivante:', [
+            'question_actuelle' => $this->questionNumber,
+            'total_questions' => $this->totalQuestions
+        ]);
+
+        // Si on a fini les 3 questions, retourner au plateau
+        if ($this->questionNumber >= $this->totalQuestions) {
+            \Log::info('✅ Session terminée - Retour au plateau');
+            $this->dispatch('retour-plateau');
+        } else {
+            // Sinon, charger la question suivante
+            $this->questionNumber++;
+            \Log::info('➡️ Chargement question ' . $this->questionNumber);
+            $this->loadNewQuestion();
+        }
     }
 
     #[On('player-on-door')]
