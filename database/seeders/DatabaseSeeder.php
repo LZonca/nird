@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        // Créer 30 questions (chacune aura automatiquement 3-4 réponses créées)
         Question::factory(30)->create();
 
-        Reponse::factory(30)->create();
 
         User::factory()->create([
             'name' => 'admin',
