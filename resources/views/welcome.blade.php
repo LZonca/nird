@@ -58,12 +58,25 @@
 
         <div class="absolute w-72 h-72 bg-blue-200/50 blur-3xl rounded-full -z-10"></div>
 
-        <img src="/planeteaccueil.png"
+        <img id="planet" src="/planeteaccueil.png"
              alt="Planète Pluto"
-             class="w-[700px] h-[700px] object-contain [filter:drop-shadow(0_25px_25px_rgba(0,0,0,0.25))]"
+             class="w-[700px] h-[700px] object-contain [filter:drop-shadow(0_25px_25px_rgba(0,0,0,0.25))]">
+
     </div>
 
 </div>
+<script>
+    const planet = document.getElementById("planet");
+    let rotation = 0;
+
+    function rotatePlanet() {
+        rotation += 0.25; // vitesse (réduire pour plus lent, augmenter pour plus rapide)
+        planet.style.transform = `rotate(${rotation}deg)`;
+        requestAnimationFrame(rotatePlanet);
+    }
+
+    rotatePlanet();
+</script>
 
 </body>
 </html>
