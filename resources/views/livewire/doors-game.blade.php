@@ -110,7 +110,6 @@
         </div>
     @endif
 
-
         <style>
             @keyframes fade-in {
                 from {
