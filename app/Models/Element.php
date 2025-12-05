@@ -13,6 +13,7 @@ class Element extends Model
         'id',
         'name',
         'level_max',
+        'url'
     ];
 
     public function bases()
