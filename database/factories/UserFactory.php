@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Base;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,6 +24,11 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+
+        $base = Base::create([
+            'name' => fake()->company()
+        ]);
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
@@ -32,6 +38,7 @@ class UserFactory extends Factory
             'two_factor_secret' => Str::random(10),
             'two_factor_recovery_codes' => Str::random(10),
             'two_factor_confirmed_at' => now(),
+            'base_id' => $base->id,
         ];
     }
 

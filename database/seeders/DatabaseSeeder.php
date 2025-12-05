@@ -3,8 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Base;
+use App\Models\Question;
+use App\Models\Reponse;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\QuestionFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,11 +19,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        Question::factory(30)->create();
 
-
-        Base::create([
-            'name' => 'Default Base',
-        ]);
+        Reponse::factory(30)->create();
 
         User::factory()->create([
             'name' => 'admin',
@@ -28,7 +29,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456789'),
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
-            'base_id' => Base::first()->id,
         ]);
     }
 }
