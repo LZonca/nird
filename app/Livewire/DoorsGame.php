@@ -23,14 +23,33 @@ class DoorsGame extends Component
 
     public function loadNewQuestion()
     {
-        // Choisir une question au hasard avec ses réponses
-        $question = Question::with('reponses')->inRandomOrder()->first();
+        $user = auth()->user();
+
+        // Récupérer les IDs des questions déjà résolues
+        $resolvedQuestionIds = $user ? $user->resolvedQuestions()->pluck('question_id')->toArray() : [];
+
+        // Essayer d'abord de trouver une question non résolue
+        $question = Question::with('reponses')
+            ->whereNotIn('id', $resolvedQuestionIds)
+            ->inRandomOrder()
+            ->first();
+
+        // Si toutes les questions sont résolues, choisir n'importe quelle question
+        if (!$question) {
+            \Log::info('📝 Toutes les questions ont été résolues, rechargement d\'une question déjà jouée');
+            $question = Question::with('reponses')->inRandomOrder()->first();
+        }
 
         if ($question) {
             $this->currentQuestion = $question;
             // Mélanger les réponses pour qu'elles ne soient pas toujours dans le même ordre
             $this->reponses = $question->reponses->shuffle();
             $this->showGame = true;
+
+            \Log::info('🎯 Question chargée:', [
+                'question_id' => $question->id,
+                'deja_resolue' => in_array($question->id, $resolvedQuestionIds)
+            ]);
         }
     }
 
@@ -79,14 +98,38 @@ class DoorsGame extends Component
         }
 
         $this->showResult = true;
+
+        // Marquer la question comme résolue si l'utilisateur a gagné
+        if ($this->resultType === 'gain' && auth()->check()) {
+            $user = auth()->user();
+
+            // Vérifier si la question n'a pas déjà été résolue
+            if (!$user->hasResolvedQuestion($this->currentQuestion->id)) {
+                $user->resolvedQuestions()->attach($this->currentQuestion->id, [
+                    'resolved_at' => now()
+                ]);
+                \Log::info('✅ Question résolue et marquée en BDD:', [
+                    'user_id' => $user->id,
+                    'question_id' => $this->currentQuestion->id
+                ]);
+            } else {
+                \Log::info('ℹ️ Question déjà résolue auparavant:', [
+                    'user_id' => $user->id,
+                    'question_id' => $this->currentQuestion->id
+                ]);
+            }
+        }
+
         $this->dispatch('answer-selected', resultType: $this->resultType, fundsEarned: $this->fundsEarned);
     }
 
     public function nextQuestion()
     {
         $this->reset(['selectedAnswer', 'resultType', 'fundsEarned', 'showResult']);
-        $this->loadNewQuestion();
         $this->dispatch('close-result-modal');
+
+        // Rediriger vers le plateau après 1 seconde (pour laisser le temps à l'animation de se terminer)
+        $this->dispatch('retour-plateau');
     }
 
     #[On('player-on-door')]

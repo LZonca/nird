@@ -15,9 +15,14 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
+    // Routes de jeu
+    Route::get('door-game', \App\Livewire\DoorsGame::class)->name('door-game');
+    Route::get('plateau', \App\Livewire\PlateauJeu::class)->name('plateau');
     Route::get('settings/profile', Profile::class)->name('profile.edit');
     Route::get('settings/password', Password::class)->name('user-password.edit');
     Route::get('settings/appearance', Appearance::class)->name('appearance.edit');

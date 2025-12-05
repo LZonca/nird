@@ -315,6 +315,13 @@
                     console.log('Le jeu de portes commence !');
                 });
 
+                Livewire.on('retour-plateau', () => {
+                    console.log('🔙 Retour au plateau...');
+                    setTimeout(() => {
+                        window.location.href = '{{ route("plateau") }}';
+                    }, 1000);
+                });
+
                 // Déclencher le flash lumineux sur la porte cliquée
                 document.addEventListener('click', (e) => {
                     const doorButton = e.target.closest('[class*="door-button-"]');
@@ -336,6 +343,6 @@
             <img src="{{ asset('images/character_back.png') }}" alt="Character" class="w-full h-full object-contain drop-shadow-2xl">
         </div>
     </div>
-
+</div>
 
 

@@ -23,6 +23,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'base_id',
+        'year',
+        'position',
+        'funds'
     ];
 
     /**
@@ -53,6 +57,24 @@ class User extends Authenticatable
     public function base()
     {
         return $this->belongsTo(Base::class);
+    }
+
+    /**
+     * Questions résolues par l'utilisateur
+     */
+    public function resolvedQuestions()
+    {
+        return $this->belongsToMany(Question::class)
+            ->withTimestamps()
+            ->withPivot('resolved_at');
+    }
+
+    /**
+     * Vérifier si une question a été résolue
+     */
+    public function hasResolvedQuestion($questionId): bool
+    {
+        return $this->resolvedQuestions()->where('question_id', $questionId)->exists();
     }
 
     /**
