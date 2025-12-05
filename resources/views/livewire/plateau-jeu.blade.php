@@ -22,9 +22,16 @@
                     $x = $rayon * cos($angleRad);
                     $y = $rayon * sin($angleRad);
 
-                    // Déterminer l'image à utiliser : base.png pour la dernière case
+                    // Déterminer l'image à utiliser
                     $isBase = ($i === $nombreCases - 1);
-                    $imageCase = $isBase ? 'base.png' : 'case.png';
+
+                    if ($isBase) {
+                        $imageCase = 'base.png';
+                    } else {
+                        // Alterner entre les 3 types de cases : case.png, case-violet.png, case-rose.png
+                        $caseTypes = ['case.png', 'case-violet.png', 'case-rose.png'];
+                        $imageCase = $caseTypes[$i % 3];
+                    }
                 @endphp
 
                 <div class="absolute case-item transform -translate-x-1/2 -translate-y-1/2"
