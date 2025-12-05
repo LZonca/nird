@@ -110,9 +110,6 @@
         </div>
     @endif
 
-        <div id="character" class="fixed bottom-12 left-1/2 -translate-x-1/2 pointer-events-none z-30 w-20 h-20">
-            <img src="{{ asset('images/doors.png') }}" alt="Character" class="w-full h-full object-contain drop-shadow-2xl">
-        </div>
 
         <style>
             @keyframes fade-in {
@@ -336,7 +333,10 @@
 
             });
         </script>
-</div>
+        <div id="character" class="fixed bottom-12 left-1/2  pointer-events-none z-30 w-40 h-40">
+            <img src="{{ asset('images/character_back.png') }}" alt="Character" class="w-full h-full object-contain drop-shadow-2xl">
+        </div>
+    </div>
 
 
 
